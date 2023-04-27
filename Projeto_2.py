@@ -53,4 +53,18 @@ def posiciona_frota(dicionario):
         for i in valor:
             for x in i:
                 tabuleiro[x[0]][x[1]] = 1
-    return tabuleiro
+    return tabuleiro 
+
+# Quantas embarcações afundadas ?
+
+def afundados(dic_embarcacoes, tabuleiro):
+    navios_afundados = 0
+    for navio, valor in dic_embarcacoes.items():
+        for i in valor:
+            t = True 
+            for x in i:
+                if tabuleiro[x[0]][x[1]] != 'X':
+                    t = False 
+            if t == True:
+                navios_afundados += 1
+    return navios_afundados
