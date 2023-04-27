@@ -36,7 +36,7 @@ def faz_jogada(tabuleiro, linha, coluna):
     return tabuleiro 
 
 # Posiciona Frota 
-def posiciona_frota(dicionario):
+def posiciona_frota(frota):
     tabuleiro = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -49,17 +49,16 @@ def posiciona_frota(dicionario):
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
-    for navio, valor in dicionario.items():
-        for i in valor:
+    for navio, posicao in frota.items():
+        for i in posicao:
             for x in i:
                 tabuleiro[x[0]][x[1]] = 1
     return tabuleiro 
 
-# Quantas embarcações afundadas ?
-
-def afundados(dic_embarcacoes, tabuleiro):
+# Quantas embarcações afundadas?
+def afundados(embarcacoes, tabuleiro):
     navios_afundados = 0
-    for navio, valor in dic_embarcacoes.items():
+    for navio, valor in embarcacoes.items():
         for i in valor:
             t = True 
             for x in i:
@@ -68,3 +67,12 @@ def afundados(dic_embarcacoes, tabuleiro):
             if t == True:
                 navios_afundados += 1
     return navios_afundados
+
+# Posição válida
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    for i in define_posicoes(linha, coluna, orientacao, tamanho):
+        if i in frota.values():
+            return False
+        if i[0] < 0 or i[0] > 9 or i[1] < 0 or i[1] > 9:
+            return False
+    return True
