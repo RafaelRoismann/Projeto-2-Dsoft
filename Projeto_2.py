@@ -82,3 +82,49 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
         if i in posicoes_ja_ocupadas:
             return False
     return True
+
+# Posicionando frota
+frota = {'porta-aviões': [], 'navio-tanque': [], 'contratorpedeiro': [], 'submarino': []}
+
+for embarcacoes in range(10):
+    if embarcacoes < 1:
+        navio = 'porta-aviões'
+        tamanho = 4
+    elif embarcacoes < 3:
+        navio = 'navio-tanque'
+        tamanho = 3
+    elif embarcacoes < 6:
+        navio = 'contratorpedeiro'
+        tamanho = 2
+    elif embarcacoes >= 6:
+        navio = 'submarino'
+        tamanho = 1
+
+    print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(navio, tamanho))
+
+    linha = int(input('Em qual linha deseja colocar o seu navio? (De 0 a 9) '))
+    coluna = int(input('Em qual coluna deseja colocar o seu navio? (De 0 a 9) '))
+    if navio != 'submarino':
+        orientacao = int(input('Em qual orientacao deseja colocar o seu navio? (1-vertical ou 2-horizontal) '))
+
+        if orientacao == 1:
+            orientacao = 'vertical'
+        elif orientacao == 2:
+            orientacao = 'horizontal'
+
+    while posicao_valida(frota, linha, coluna, orientacao, tamanho) == False:
+        print('Esta posição não está válida!')
+        print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(navio, tamanho))
+        linha = int(input('Em qual linha deseja colocar o seu navio? (De 0 a 9) '))
+        coluna = int(input('Em qual coluna deseja colocar o seu navio? (De 0 a 9) '))
+        if navio != 'submarino':
+            orientacao = int(input('Em qual orientacao deseja colocar o seu navio? (1-vertical ou 2-horizontal) '))
+
+            if orientacao == 1:
+                orientacao = 'vertical'
+            elif orientacao == 2:
+                orientacao = 'horizontal'
+
+    frota = preenche_frota(frota, navio, linha, coluna, orientacao, tamanho)
+    
+print(frota)
