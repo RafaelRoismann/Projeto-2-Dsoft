@@ -70,9 +70,15 @@ def afundados(embarcacoes, tabuleiro):
 
 # Posição válida
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes_ja_ocupadas = []
+    for navios in frota.values():
+        for navio in navios:
+            for posicao in navio:
+                posicoes_ja_ocupadas.append(posicao)
+
     for i in define_posicoes(linha, coluna, orientacao, tamanho):
-        if i in frota.values():
-            return False
         if i[0] < 0 or i[0] > 9 or i[1] < 0 or i[1] > 9:
+            return False
+        if i in posicoes_ja_ocupadas:
             return False
     return True
