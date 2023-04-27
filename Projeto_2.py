@@ -34,3 +34,23 @@ def faz_jogada(tabuleiro, linha, coluna):
     if posicao == 0:
         tabuleiro[linha][coluna] = '-'
     return tabuleiro 
+
+# Posiciona Frota 
+def posiciona_frota(dicionario):
+    tabuleiro = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+    for navio, valor in dicionario.items():
+        for i in valor:
+            for x in i:
+                tabuleiro[x[0]][x[1]] = 1
+    return tabuleiro
