@@ -205,16 +205,19 @@ tabuleiro_jogador = posiciona_frota(frota)
 posicoes_anteriores = []
 
 jogando = True
+chutes_oponente = [[1, 5], [1, 6], [1, 7], [1, 8], [6, 1], [6, 2], [6, 3], [4, 7], [5, 7], [6, 7], [1, 1], [2, 1], [2, 3], [3, 3], [9, 1], [9, 2], [0, 3], [4, 5], [8, 9], [8, 4]]
+opo_i = 0
 
 while jogando:
+    print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
     linha_de_ataque = input_interno('Qual a linha que você deseja atacar? (De 0 a 9) ','Linha inválida!')
     coluna_de_ataque = input_interno('Qual a coluna que você deseja atacar? (De 0 a 9) ','Coluna inválida!')
     
     if [linha_de_ataque, coluna_de_ataque] in posicoes_anteriores:
         print('A posição linha', linha_de_ataque, 'e coluna', coluna_de_ataque, 'já foi informada anteriormente!')
     else:
-        tabuleiro_atualizado_do_oponente = faz_jogada(tabuleiro_oponente, linha_de_ataque, coluna_de_ataque)
-        print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_atualizado_do_oponente))
+        tabuleiro_oponente = faz_jogada(tabuleiro_oponente, linha_de_ataque, coluna_de_ataque)
+        
 
     posicoes_anteriores.append([linha_de_ataque, coluna_de_ataque])
 
@@ -232,8 +235,10 @@ while jogando:
         t = True
         while t:
             lista_posicoes_sorteadas = []
-            linha_sorteada = random.randint(0,9)
-            coluna_sorteada = random.randint(0,9)
+            '''linha_sorteada = random.randint(0,9)
+            coluna_sorteada = random.randint(0,9)'''
+            linha_sorteada, coluna_sorteada = chutes_oponente[opo_i]
+            opo_i+=1
             posicao_sorteada = [linha_sorteada,coluna_sorteada]
 
             if posicao_sorteada not in lista_posicoes_sorteadas:
