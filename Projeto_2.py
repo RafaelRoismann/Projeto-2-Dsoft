@@ -228,27 +228,28 @@ while jogando:
 # Jogada do oponente 
 
     # Sorear uma linha e coluna
-    t = True
-    while t:
-        lista_posicoes_sorteadas = []
-        linha_sorteada = random.randint(0,9)
-        coluna_sorteada = random.randint(0,9)
-        posicao_sorteada = [linha_sorteada,coluna_sorteada]
+    else:
+        t = True
+        while t:
+            lista_posicoes_sorteadas = []
+            linha_sorteada = random.randint(0,9)
+            coluna_sorteada = random.randint(0,9)
+            posicao_sorteada = [linha_sorteada,coluna_sorteada]
 
-        if posicao_sorteada not in lista_posicoes_sorteadas:
-            t = False 
+            if posicao_sorteada not in lista_posicoes_sorteadas:
+                t = False 
 
-    # Salvar essa posição em uma lista 
-    lista_posicoes_sorteadas.append(posicao_sorteada)
+        # Salvar essa posição em uma lista 
+        lista_posicoes_sorteadas.append(posicao_sorteada)
 
-    # Imprimir a strig falando o que foi escolhido 
-    print("Seu oponente está atacando na linha {0} e coluna {1}".format(linha_sorteada,coluna_sorteada))
+        # Imprimir a strig falando o que foi escolhido 
+        print("Seu oponente está atacando na linha {0} e coluna {1}".format(linha_sorteada,coluna_sorteada))
 
-    # Atualizando o tabuleiro
-    tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha_sorteada,coluna_sorteada)
+        # Atualizando o tabuleiro
+        tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha_sorteada,coluna_sorteada)
 
-    # Verificar se o oponente derrubou toda a embarcação
-    n_afundados = afundados(frota,tabuleiro_jogador)
-    if n_afundados == 10:
-        print('Xi! O oponente derrubou toda a sua frota =(')
-        break 
+        # Verificar se o oponente derrubou toda a embarcação
+        n_afundados = afundados(frota,tabuleiro_jogador)
+        if n_afundados == 10:
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False 
