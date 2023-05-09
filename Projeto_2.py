@@ -162,7 +162,7 @@ def input_interno(questao, erro):
     return resp
 
 # Posicionando frota
-frota = {'porta-aviões': [], 'navio-tanque': [], 'contratorpedeiro': [], 'submarino': []}
+frota_jogador = {'porta-aviões': [], 'navio-tanque': [], 'contratorpedeiro': [], 'submarino': []}
 
 # Define tipo do navio
 for embarcacoes in range(10):
@@ -198,7 +198,7 @@ for embarcacoes in range(10):
             orientacao = 'horizontal'
 
     # Valida posicionamento do navio
-    while posicao_valida(frota, linha, coluna, orientacao, tamanho) == False:
+    while posicao_valida(frota_jogador, linha, coluna, orientacao, tamanho) == False:
         print('Esta posição não está válida!')
         print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(navio, tamanho))
         linha = input_interno('Em qual linha deseja colocar o seu navio? (De 0 a 9) ', 'Linha inválida!')
@@ -213,7 +213,7 @@ for embarcacoes in range(10):
                 orientacao = 'horizontal'
 
     # Adiciona novo navio à frota
-    frota = preenche_frota(frota, navio, linha, coluna, orientacao, tamanho)
+    frota_jogador = preenche_frota(frota_jogador, navio, linha, coluna, orientacao, tamanho)
 
 # Jogadas do jogador
 
@@ -243,7 +243,7 @@ frota_oponente = {
 tabuleiro_oponente = posiciona_frota(frota_oponente)
 
 # Posiciona a frota do jogador no tabuleiro do jogador
-tabuleiro_jogador = posiciona_frota(frota)
+tabuleiro_jogador = posiciona_frota(frota_jogador)
 
 # Cria lista de posições anteriores
 posicoes_anteriores = []
@@ -304,7 +304,7 @@ while jogando:
         tabuleiro_jogador = faz_jogada(tabuleiro_jogador, linha_sorteada, coluna_sorteada)
 
         # Verificar se o oponente derrubou todas as embarcações do jogador
-        n_afundados = afundados(frota, tabuleiro_jogador)
+        n_afundados = afundados(frota_jogador, tabuleiro_jogador)
         if n_afundados == 10:
             print('Xi! O oponente derrubou toda a sua frota =(')
             jogando = False 
