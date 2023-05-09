@@ -3,7 +3,6 @@
 # Importando a biblioteca random
 import random
 
-random.seed(1)
 # Define o posicionamento dos navios
 def define_posicoes(linha, coluna, orientacao, tamanho):
     lista_posicoes = []
@@ -64,7 +63,7 @@ def posiciona_frota(frota):
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
-    # Marca a posição dos navios no tabuleiro
+    # Posiciona a posição dos navios no tabuleiro
     for nome_navio, navios in frota.items():
         for navio in navios:
             for parte_do_navio in navio:
@@ -190,6 +189,7 @@ for embarcacoes in range(10):
     # Perguntar a orientação caso o tipo do navio não seja um submarino
     if navio != 'submarino':
         orientacao = int(input_interno('Em qual orientacao deseja colocar o seu navio? (1-vertical ou 2-horizontal) ', 'Orientação inválida!'))
+        
         # Define orientação vertical
         if orientacao == 1:
             orientacao = 'vertical'
@@ -205,6 +205,7 @@ for embarcacoes in range(10):
         coluna = input_interno('Em qual coluna deseja colocar o seu navio? (De 0 a 9) ', 'Coluna inválida!')
         if navio != 'submarino':
             orientacao = input_interno('Em qual orientacao deseja colocar o seu navio? (1-vertical ou 2-horizontal) ', 'Orientação inválida!')
+            
             # Define orientação vertical
             if orientacao == 1:
                 orientacao = 'vertical'
@@ -293,7 +294,6 @@ while jogando:
             if posicao_sorteada not in lista_posicoes_sorteadas:
                 t = False
                 
-
         # Salvar jogada do oponente na lista de ataques anteriores do oponente
         lista_posicoes_sorteadas.append(posicao_sorteada)
 
