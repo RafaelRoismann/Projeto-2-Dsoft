@@ -248,6 +248,7 @@ tabuleiro_jogador = posiciona_frota(frota_jogador)
 
 # Cria lista de posições anteriores
 posicoes_anteriores = []
+lista_posicoes_sorteadas = []
 
 jogando = True
 while jogando:
@@ -282,7 +283,6 @@ while jogando:
     # Define jogada do oponente
     else:
         # Cria lista de ataque do oponente
-        lista_posicoes_sorteadas = []
         t = True
         while t:
             # Sorteia jogada do oponente
@@ -294,8 +294,8 @@ while jogando:
             if posicao_sorteada not in lista_posicoes_sorteadas:
                 t = False
                 
-        # Salvar jogada do oponente na lista de ataques anteriores do oponente
-        lista_posicoes_sorteadas.append(posicao_sorteada)
+                # Salvar jogada do oponente na lista de ataques anteriores do oponente
+                lista_posicoes_sorteadas.append(posicao_sorteada)
 
         # Imprimir a string informando o ataque do oponente 
         print("Seu oponente está atacando na linha {0} e coluna {1}".format(linha_sorteada, coluna_sorteada))
