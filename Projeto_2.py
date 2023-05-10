@@ -278,7 +278,7 @@ while jogando:
         jogando = False
 
 
-# Jogada do oponente 
+    # Jogada do oponente 
     
     # Define jogada do oponente
     else:
